@@ -1,0 +1,252 @@
+%
+% compile with pdflatex:
+%   $ pdflatex homework-example.tex
+% , yields homework-example.pdf
+%    You might need to compile twice, if, e.g., you start using references
+%
+
+\documentclass[10pt,letterpaper,oneside]{article}
+\usepackage[ascii]{inputenc}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage[margin=1in]{geometry}
+	\setlength{\parindent}{0em}
+	\setlength{\parskip}{1em}
+
+\newtheorem{theorem}{Theorem}
+
+\usepackage[section]{algorithm}
+%\usepackage{algorithm2e}
+\usepackage[noend]{algpseudocode}
+
+	%\renewcommand{\algorithmiccomment}[1]%
+	% {\bgroup\hfill\small$\triangleright$#1\egroup}
+
+	%\renewcommand{\algorithmiccomment}[1]{\footnotesize // #1}
+	\renewcommand{\algorithmicforall}{$\boldsymbol\forall$}
+
+%%%% user definitions %%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\Problem}[1]{\subsection*{Problem #1}}
+\newcommand{\Part}[1]{\subsubsection*{Part #1}}
+\newcommand{\Solution}{\subsubsection*{Solution}}
+
+	% Forms for Big-Oh notation
+\DeclareMathOperator{\Omicron}{O}
+\DeclareMathOperator{\omicron}{o}
+
+\newcommand{\BigOh}[1]{\Omicron(#1)}
+\newcommand{\LittleOh}[1]{\omicron(#1)}
+\newcommand{\BigOmega}[1]{\Omega(#1)}
+\newcommand{\LittleOmega}[1]{\omega(#1)}
+\newcommand{\BigTheta}[1]{\Theta(#1)}
+
+	% Operators for dominance notation
+\newcommand{\domeq}{\sim}
+\newcommand{\domle}{\preceq}
+\newcommand{\domlt}{\prec}
+\newcommand{\domge}{\succeq}
+\newcommand{\domgt}{\succ}
+
+	% Some convenient definitions for coding
+\newcommand{\NOT}{~\textbf{not}~}
+\newcommand{\AND}{~\textbf{and}~}
+\newcommand{\OR}{~\textbf{or}~}
+\newcommand{\TRUE}{\textsc{True}}
+\newcommand{\FALSE}{\textsc{False}}
+
+%%%%%%%%  You edit stuff below this line  %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Homework 1	\LaTeX}
+\author{Joseph Mulray}
+%\date{16 January 2017}  % uses today, by default
+
+\begin{document}
+
+\maketitle
+
+\Problem{1.10}
+
+	Indicate for each distinct pair i and j whether fi(n) is O(fj(n)) and whether fi(n) is Ω(fj(n)).
+	\Part{a}
+	\Solution
+	$f_1 = n^2$\\
+	$f_2 = n^2 + 1000n$
+	\[
+		f_3= \left\lbrace%
+		\begin{array}{cc}
+		n, \text{$n$ is odd}\\
+		n^3, \text{$n$ is even}\\
+		\end{array} \right.
+	\]
+	\[
+		f_4= \left\lbrace%
+		\begin{array}{cc}
+		n, \text{$n$ is n <= 100}\\
+		n^3, \text{$n$ is even}\\
+		\end{array} \right.
+	\]	
+
+	\begin{eqnarray*}
+		\text{Let $n = 5$.  Substituting:} \\
+		f(5) = 3(5)^2 + 2(5) - 17 \\
+		f(5) = 3*25 + 10 - 17 \\
+		\text{So, of course:} \\
+		f(5) = 68 
+	\end{eqnarray*}
+
+	We can get the equals signs to line up:
+
+	\begin{eqnarray*}
+		\text{Let $n = 5$.  Substituting:} \\
+		f(5) & = & 3(5)^2 + 2(5) - 17 \\
+		     & = & 3*25 + 10 - 17 \\
+		\text{And, here's text:} \\
+		f(5) & = & 68 
+	\end{eqnarray*}
+
+\Problem{2}
+
+	\Part{a}
+	Here are some sums you'd better have stuck in your head
+
+	\Solution
+		\begin{eqnarray}
+			\sum_{i=a}^b r  & = & (b-a+1)r \\
+			\sum_{i} c(f_i) & = & c\sum_{i} (f_i) \\
+			\text{For some big parens:} \\
+			\sum_{i} (f_i+g_i) & = & \left(\sum_{i} f_i + \sum_{i} g_i\right) \\
+			\sum_{i=1}^m i  & = & \frac{m(m+1)}{2} \\
+			\sum_{i=1}^m i^2  & = & \frac{m(m+1)(2m+1)}{6} \\
+			\sum_{i=0}^m ar^i, r\neq1  & = & a\frac{r^{m+1}-1}{r-1} \\
+			\sum_{i=0}^\infty ar^i, 0<|r|<1  & = & a\frac{1}{1-r} 
+		\end{eqnarray}
+		
+	\Part{b}
+	Here are some logs you'd better have stuck in your head
+
+	\Solution
+		\begin{eqnarray}
+			\log_b 1 & = & 0 \\
+			\log_b b & = & 1 \\
+			\log_b (xy) & = & \log_b x + \log_b y \\
+			\log_b\frac{x}{y} & = & \log_b x - \log_b y \\
+			\log_b x^n & = & n\log_b x 
+		\end{eqnarray}
+
+\Problem{3}
+	Here's a definition of Fibonacci numbers
+
+	\Solution
+		\[
+			F_n = \left\lbrace%I
+			\begin{array}{cc}
+				F_{n-1} + F_{n-2} &, n > 1 \\
+				1 &, n=0 \\
+				1 &, n=1 \\
+			\end{array} \right.
+		\]
+
+\Problem{4}
+	And tables are pretty easy.  \& separates columns, and
+	\textbackslash{}\textbackslash{} is a newline in \LaTeX
+
+	\Solution
+	\begin{center}
+	\begin{tabular}{ c | r | l }
+		Name & $n$ & $(3/2)^n$ \\
+		\hline
+		Picard & 0  & 1 \\
+		Riker & 1  & 1.5 \\
+		Worf & 2	& 2.25 \\
+		Troi & 3	& 3.375 \\
+		Crusher & 4	& 5.0625 \\
+		LaForge & 5	& 7.59375 \\
+		O'Brien & 6	& 11.390625 \\
+		Guinan & 7	& 17.0859375 \\
+		Q & 8	& 25.62890625 
+	\end{tabular}
+	\end{center}
+
+	We can get the decimals to line up:
+
+	\begin{center}
+	\begin{tabular}{ c | r | r @{.} l }
+		Name & $n$ & $(3/2)^n$ \\
+		\hline
+		Picard & 0  & 1 & \\
+		Riker & 1  & 1 & 5 \\
+		Worf & 2	& 2 & 25 \\
+		Troi & 3	& 3 & 375 \\
+		Crusher & 4	& 5 & 0625 \\
+		LaForge & 5	& 7 & 59375 \\
+		O'Brien & 6	& 11 & 390625 \\
+		Guinan & 7	& 17 & 0859375 \\
+		Q & 8	& 25 & 62890625 
+	\end{tabular}
+	\end{center}
+
+\Problem{5}
+Show the following statements:
+
+	\Part{a}
+		$ 3n+7 \in \BigOh{n^2} $
+	
+	\Solution
+		By the definition, we need to find a $c>0$ and $n_0>0$ such that $cn^2
+		\geq 3n+7 , \forall n>n_0$:
+
+		\begin{eqnarray*}
+			3n+7 & \leq & 3n^2 + 7n^2 , \forall n\geq1 \\
+			     & =    & 10n^2 \\
+			\text{So, we have} \\
+			10n^2 & \geq & 3n+7 , \forall n>1
+		\end{eqnarray*}
+
+		We have our 2 witnesses.
+
+
+\Problem{6}
+Write some nonsense code, by way of example.
+
+	\Solution
+	Here's a list of common math symbols in $LaTeX$:  https://oeis.org/wiki/List\_of\_LaTeX\_mathematical\_symbols
+
+	\begin{algorithm}[H]  % Optional float wrapper for algorithmic, algorithmicx
+		\caption{Totally optional}
+
+		\begin{algorithmic} % [1] if followed by an arg, line numbering starts there
+			\Function{Foo}{$G$:~graph, $c$:~color}
+				\State $S \gets$ \textsc{Set}()
+				\State $rv \gets 13$
+				\State \Comment{This is a comment -- $\BigOh{V^2}$}
+				\ForAll{$v \in G$}
+					\State $color[v] \gets white$
+				\EndFor
+
+				\State \Call{bar}{$Q, c$}
+
+				\item[] % blank line, not numbered
+				\While{ \NOT \Call{IsEmpty}{$S$} \AND \Call{Magic}{$v$} }
+					\If{ $x \leq \infty$ }
+						\State $\pi[w] \gets v$
+						\State \Call{Insert}{ $S, v$ }
+					\Else
+						\State $\pi[w] \gets u$
+					\EndIf
+					\State \textsc{Juggle\_Magic}()
+				\EndWhile
+				\item[]
+				\Return $S$
+			\EndFunction
+
+			\State  % blank line, numbered with its neighbors
+			\For{ $i \gets 1..n$ }
+				\For{ $j \gets 1..i$ }
+					\State \Call{Print}{ i, j }
+				\EndFor
+			\EndFor
+		\end{algorithmic}
+	\end{algorithm}
+ 
+
+\end{document}
