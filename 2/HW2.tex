@@ -1,0 +1,199 @@
+%
+% compile with pdflatex:
+%   $ pdflatex homework-example.tex
+% , yields homework-example.pdf
+%    You might need to compile twice, if, e.g., you start using references
+%
+
+\documentclass[10pt,letterpaper,oneside]{article}
+\usepackage[ascii]{inputenc}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage[margin=1in]{geometry}
+	\setlength{\parindent}{0em}
+	\setlength{\parskip}{1em}
+
+\newtheorem{theorem}{Theorem}
+
+\usepackage[section]{algorithm}
+%\usepackage{algorithm2e}
+\usepackage[noend]{algpseudocode}
+
+	%\renewcommand{\algorithmiccomment}[1]%
+	% {\bgroup\hfill\small$\triangleright$#1\egroup}
+
+	%\renewcommand{\algorithmiccomment}[1]{\footnotesize // #1}
+	\renewcommand{\algorithmicforall}{$\boldsymbol\forall$}
+
+%%%% user definitions %%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\Problem}[1]{\subsection*{Problem #1}}
+\newcommand{\Part}[1]{\subsubsection*{Part #1}}
+\newcommand{\Solution}{\subsubsection*{Solution}}
+
+	% Forms for Big-Oh notation
+\DeclareMathOperator{\Omicron}{O}
+\DeclareMathOperator{\omicron}{o}
+
+\newcommand{\BigOh}[1]{\Omicron(#1)}
+\newcommand{\LittleOh}[1]{\omicron(#1)}
+\newcommand{\BigOmega}[1]{\Omega(#1)}
+\newcommand{\LittleOmega}[1]{\omega(#1)}
+\newcommand{\BigTheta}[1]{\Theta(#1)}
+
+	% Operators for dominance notation
+\newcommand{\domeq}{\sim}
+\newcommand{\domle}{\preceq}
+\newcommand{\domlt}{\prec}
+\newcommand{\domge}{\succeq}
+\newcommand{\domgt}{\succ}
+
+	% Some convenient definitions for coding
+\newcommand{\NOT}{~\textbf{not}~}
+\newcommand{\AND}{~\textbf{and}~}
+\newcommand{\OR}{~\textbf{or}~}
+\newcommand{\TRUE}{\textsc{True}}
+\newcommand{\FALSE}{\textsc{False}}
+
+%%%%%%%%  You edit stuff below this line  %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Homework 2 \LaTeX}
+\author{Joseph Mulray}
+%\date{}  % uses today, by default
+
+\begin{document}
+
+\maketitle
+
+\Problem{1.13}
+
+	\Part {a}
+
+	Show that the following statements are true.
+	
+	\text{17 \in \BigOh{1}}
+
+	\Solution
+		\begin{eqnarray*}
+			\text{$17 \in \BigOh{1}$}\\
+			\text{$17 <= c(1)$}\\
+			\text{Let c = 18}\\
+			\text{$c=18$}\\
+			\text{$17 <= 18(1)$}\\
+			\text{ 17 $\in \BigOh{1}$}
+		\end{eqnarray*}
+
+
+	\Part {b}
+	$ n(n-1)/2 \in \BigOh{n^2} $
+
+	\Solution
+		\begin{eqnarray*}
+			\text{$(n(n-1))/2 \in \BigOh{n^2}$}\\
+			\text{$(n(n-1))/2 = \frac{1}{2} (n^2 + n)$}\\
+			\text{$\frac{1}{2} n^2 + n <= c(n^2) $}\\
+			\text{Let c = 2}\\
+			\text{$c=2$}\\
+			\text{$ \frac{1}{2} n^2 + n <= 2(n^2)$}\\
+			\text{$ n^2 + n <= 4(n^2)$}  \forall n>1\\
+			\text{$n(n-1)/2 \in \BigOh{n^2}$}\\
+		\end{eqnarray*}
+
+
+
+	\Part {c}
+	max $ (n^3,10n^2) \in \BigOh{n^3} $
+
+	\Solution
+		\begin{eqnarray*}
+			\text{max $ (n^3,10n^2) \in \BigOh{n^3} $}\\
+			\text{max $(n^3,10n^2) <= c(n^3) $}\\
+			\text{Let c = 20}\\
+			\text{$c=20$}\\
+			\text{max $(n^3,10n^2) <= 20(n^3)$}\\
+			\text{max $ (n^3,10n^2)<= 20(n^3$}  \forall n>20\\
+			\text{max $ (n^3,10n^2) \in \BigOh{n^3} $}\\
+		\end{eqnarray*}
+
+ 	\Part {d}
+ 	$\sum_{i=1}^n i^k \in \BigOh{n^ {k+1}}$ and $ \in \BigOmega{n^{k+1}}$ for integer k
+
+ 	First Part
+ 	\Solution
+		\begin{eqnarray*}
+			\text{$\sum_{i=1}^n i^k \in \BigOh{n^ {k+1}}$}\\
+			\text{$\sum_{i=1}^n i^k <= c(n^ {k+1}) $}\\
+			\text{Let c = 1}\\
+			\text{$c=1$}\\
+			\text{$\sum_{i=1}^n i^k <= 1(n^ {k+1}) $}\\
+			\text{$\sum_{i=1}^n i^k <= c(n^ {k+1}) $}  \forall n>1\\
+			\text{$\sum_{i=1}^n i^k \in \BigOh{n^ {k+1}}$}\\
+		\end{eqnarray*}
+
+
+
+	Part 2 $\\$
+	$\BigOmega{n^{k+1}}$ for integer k
+		\begin{eqnarray*}
+			\text{$\BigOmega{n^{k+1}} \in $ k}\\
+			\text{$ c(n^{k+1}) >= k$}\\
+			\text{Let c = 1 or anyvalue $>$ 0}\\
+			\text{k is just a constant in this case}\\
+			\text{$(n^{k+1}) >= k \forall n>1$}\\
+			\text{$\BigOmega{n^{k+1}} \in $ k}\\
+		\end{eqnarray*}
+
+
+	\Part {e}
+	\Solution
+	p(n) is $\BigOh{n^k} $ for any degree polynomial is $p(n) is \BigOh{n^k} \\$ for all $n > 1$ and $\BigOmega{n^k} $ for all $n < 1$ 
+
+
+
+\Problem {1.16}
+	Order the following functions by growth rate:
+
+	\Solution
+		\begin{eqnarray*}
+			\text{h. $(\frac{1}{3})^n$}\\
+			\text{j. 17}\\
+			\text{d. $log(log(n))$}\\
+			\text{c.$log(n)$}\\
+			\text{e.$log^2(n)$}\\
+			\text{b. $\sqrt{n}$}\\
+			\text{g. $\sqrt{n}log^2(n)$ }\\
+			\text{f. $\frac{n}{log(n)}$}\\
+			\text{a. $n$ }\\
+			\text{i. $(3/2)^n$} \\
+		\end{eqnarray*}
+
+
+
+\Problem {1.18}
+	Fuction Max
+	\Part{a}
+	\Solution
+	T(j) = $2^{n+1}$
+
+	\Part{b}
+	\Solution
+	T(n) = $2^{n}$
+
+
+
+
+\Problem {2.9}
+Procedure delete does not always work because you are deleting the reference to the pointer and then tring to point to the next position after you delete it, losing the rest of the list and a waste of memory allocation
+
+
+
+
+\Problem {2.11}
+First(L) = $n\\$
+Next(L) = $n^3 + n^2 + n\\$
+End(L) = $n^2\\$
+
+
+
+\end{document}
+
+
