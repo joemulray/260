@@ -33,4 +33,4 @@ if __name__ == '__main__':
 		prob2Delta = prob2Timer.timeit(1)
 
 		#display output
-		print '%s\t %s \t%s' %(num, prob1Delta, prob2Delta)
+		print '%s %s %s' %(str(num), str(prob1Delta), str(prob2Delta))
