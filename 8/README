@@ -1,0 +1,8 @@
+Joseph Mulray
+CS260
+HW8: Implimentation
+Graphs I
+
+Included a test option for makefile command is below. Other wise target prob1 will just run the progam.
+
+make test file=<test_filename>
